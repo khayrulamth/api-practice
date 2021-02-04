@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api practice</title>
+</head>
+
+<body>
+    <h1 id="to-do-title"></h1>
+    <h3 id="link">Learn From <a id="active-link" href="">This Link</a></h3>
+
+
+    <script>
+        function doTask(){
+            fetch('http://www.boredapi.com/api/activity/')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('to-do-title').innerText = data.activity;
+                    document.getElementById("active-link").innerText = data.link;
+                    console.log(data);
+                });
+        }
+        doTask();
+        setInterval(() => {
+            doTask();
+        }, 4844);
+
+    </script>
+</body>
+
+</html>
